@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wedding Invitation - Vedant & Nikita</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-2">
+    <div class="container-fluid px-3 px-md-4">
+      <a class="navbar-brand fw-bold fs-4 m-0 d-flex align-items-center" href="#home" id="nav-brand-link">
+        <img id="nav-logo" src="" alt="Logo" class="logo-img me-2 d-none">
+      </a>
+
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button id="langToggleBtnMobile" class="btn btn-sm btn-gold rounded-pill px-3 shadow-sm" onclick="window.toggleLanguage()">EN</button>
+        <button class="navbar-toggler border-0 shadow-none p-1 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <i class="bi bi-list fs-1 text-maroon"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center gap-2 gap-lg-4 text-center mt-3 mt-lg-0">
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#home" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#couple" data-i18n="nav_couple">Couple</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#events" data-i18n="nav_events">Events</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#family" data-i18n="nav_family">Family</a></li>
+          <li class="nav-item w-100" id="nav-gallery-item"><a class="nav-link w-100" href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#contact" data-i18n="nav_contact">Location</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#rsvp" data-i18n="nav_rsvp">RSVP</a></li>
+          <li class="nav-item ms-lg-2 d-none d-lg-block">
+            <button id="langToggleBtnDesktop" class="btn btn-gold rounded-pill px-4 py-2 shadow-sm" onclick="window.toggleLanguage()">EN</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <!-- Floating blobs -->
+    <div class="blob blob-1 d-none d-md-block"></div>
+    <div class="blob blob-2 d-none d-md-block"></div>
+
+    <div class="container px-2" data-aos="zoom-in" data-aos-duration="1500">
+      <div class="hero-content mx-auto">
+        <h3 class="text-gold mb-2 fw-light fst-italic fs-5 fs-md-4" data-i18n="hero_welcome">Welcome to our wedding</h3>
+        <h1 class="couple-names fw-bold mb-3" id="couple-names">Bride & Groom</h1>
+        <p class="mb-2 text-white" data-i18n="hero_date_prefix">Save the Date</p>
+        <p class="fs-4 fs-md-3 fw-bold text-gold m-0" id="hero-wedding-date">03 May 2026</p>
+
+        <div class="countdown-container mx-auto" id="countdown">
+          <div class="countdown-item">
+            <span id="days">00</span>
+            <small data-i18n="countdown_days">Days</small>
+          </div>
+          <div class="countdown-item">
+            <span id="hours">00</span>
+            <small data-i18n="countdown_hours">Hours</small>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes">00</span>
+            <small data-i18n="countdown_minutes">Minutes</small>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds">00</span>
+            <small data-i18n="countdown_seconds">Seconds</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Couple Section -->
+  <section id="couple" class="container mt-4">
+    <div class="w-100">
+      <div class="text-center mb-4 mb-md-5" data-aos="fade-up">
+        <h2 class="display-5 fw-bold text-maroon mb-2" data-i18n="couple_title">वधू आणि वर</h2>
+        <div class="modern-divider"></div>
+      </div>
+
+      <div class="row g-4 g-md-5 align-items-center mb-5">
+        <div class="col-12 col-md-5 order-2 order-md-2" data-aos="fade-left">
+          <div class="custom-card p-4 p-md-5 text-center h-100 d-flex flex-column justify-content-center">
+            <h3 class="display-6 fw-bold mb-2 text-maroon" id="bride-name">Bride Name</h3>
+            <p class="text-gold fst-italic mb-3 small fw-bold" data-i18n="bride_daughter_of">सुवासिनी</p>
+            <h5 class="fw-bold fs-6 fs-md-5 m-0 text-dark" id="bride-father">Father</h5>
+            <h5 class="fw-bold mb-3 fs-6 fs-md-5 text-dark" id="bride-mother">Mother</h5>
+            <p class="lh-base text-muted m-0 small" id="bride-desc">Description</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-7 order-1 order-md-1" data-aos="fade-right">
+          <img id="bride-photo" src="" class="img-fluid img-modern" alt="Bride">
+        </div>
+      </div>
+
+      <div class="row g-4 g-md-5 align-items-center">
+        <div class="col-12 col-md-5 order-2 order-md-1" data-aos="fade-right">
+          <div class="custom-card p-4 p-md-5 text-center h-100 d-flex flex-column justify-content-center">
+            <h3 class="display-6 fw-bold mb-2 text-maroon" id="groom-name">Groom Name</h3>
+            <p class="text-gold fst-italic mb-3 small fw-bold" data-i18n="groom_son_of">चिरंजीव</p>
+            <h5 class="fw-bold fs-6 fs-md-5 m-0 text-dark" id="groom-father">Father</h5>
+            <h5 class="fw-bold mb-3 fs-6 fs-md-5 text-dark" id="groom-mother">Mother</h5>
+            <p class="lh-base text-muted m-0 small" id="groom-desc">Description</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-7 order-1 order-md-2" data-aos="fade-left">
+          <img id="groom-photo" src="" class="img-fluid img-modern" alt="Groom">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" style="background-color: var(--primary-light);">
+    <div class="container px-3 w-100">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="display-5 fw-bold text-maroon mb-2" data-i18n="events_title">Wedding Events</h2>
+        <div class="modern-divider"></div>
+      </div>
+
+      <div class="row g-5 justify-content-center pt-3">
+        <!-- Engagement -->
+        <div class="col-12 col-md-6" data-aos="fade-up">
+          <div class="custom-card event-card p-4 p-md-5 h-100 text-center position-relative mt-4">
+            <div class="position-absolute start-50 translate-middle event-icon-wrapper">
+              <i class="bi bi-stars"></i>
+            </div>
+            <h3 class="fw-bold mb-3 text-maroon mt-4 fs-4" data-i18n="event_engagement">साखरपुडा / हळदी</h3>
+            <div class="mb-2">
+              <span class="d-block fw-bold text-gold small text-uppercase" data-i18n="event_date">Date</span>
+              <span id="event-engagement-date" class="fs-6 fw-medium text-dark">Date</span>
+            </div>
+            <div class="mb-3">
+              <span class="d-block fw-bold text-gold small text-uppercase" data-i18n="event_time">Time</span>
+              <span id="event-engagement-time" class="fs-6 fw-medium text-dark">Time</span>
+            </div>
+            <div>
+              <span class="d-block fw-bold text-gold small text-uppercase" data-i18n="event_venue">Venue</span>
+              <span id="event-engagement-venue" class="fs-6 fw-bold text-maroon d-block">Venue Name</span>
+              <span id="event-engagement-address" class="text-muted mt-1 small d-block">Address</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wedding -->
+        <div class="col-12 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="custom-card event-card p-4 p-md-5 h-100 text-center position-relative mt-4">
+            <div class="position-absolute start-50 translate-middle event-icon-wrapper">
+              <i class="bi bi-suit-heart-fill"></i>
+            </div>
+            <h3 class="fw-bold mb-3 text-maroon mt-4 fs-4" data-i18n="event_wedding">विवाह</h3>
+            <div class="mb-2">
+              <span class="d-block fw-bold text-gold small text-uppercase" data-i18n="event_date">Date</span>
+              <span id="event-wedding-date" class="fs-6 fw-medium text-dark">Date</span>
+            </div>
+            <div class="mb-3">
+              <span class="d-block fw-bold text-gold small text-uppercase" data-i18n="event_time">Time</span>
+              <span id="event-wedding-time" class="fs-6 fw-medium text-dark">Time</span>
+            </div>
+            <div>
+              <span class="d-block fw-bold text-gold small text-uppercase" data-i18n="event_venue">Venue</span>
+              <span id="event-wedding-venue" class="fs-6 fw-bold text-maroon d-block">Venue Name</span>
+              <span id="event-wedding-address" class="text-muted mt-1 small d-block">Address</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Section -->
+  <section id="family" class="container mt-4">
+    <div class="w-100">
+      <div class="text-center mb-4" data-aos="fade-up">
+        <h2 class="display-5 fw-bold text-maroon mb-2" data-i18n="family_title">आमचे परिवार</h2>
+        <div class="modern-divider"></div>
+      </div>
+
+      <div class="row g-3 g-md-4">
+        <div class="col-12 col-md-6" data-aos="fade-up">
+          <div class="custom-card p-3 p-md-4 h-100">
+            <h4 class="text-maroon text-center fw-bold mb-3 border-bottom border-light pb-2 fs-5">आपले नम्र (वर पक्ष)</h4>
+            <ul class="list-unstyled text-center lh-lg fw-medium small text-dark" id="inviting-families-groom"></ul>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6" data-aos="fade-up">
+          <div class="custom-card p-3 p-md-4 h-100">
+            <h4 class="text-maroon text-center fw-bold mb-3 border-bottom border-light pb-2 fs-5">आपले नम्र (वधू पक्ष)</h4>
+            <ul class="list-unstyled text-center lh-lg fw-medium small text-dark" id="inviting-families-bride"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 g-md-4 mt-2">
+        <div class="col-12 col-md-4" data-aos="fade-up">
+          <div class="custom-card p-3 h-100 text-center">
+            <h4 class="text-maroon fw-bold mb-2 border-bottom border-light pb-2 fs-5">मामा</h4>
+            <ul class="list-unstyled lh-lg small text-dark" id="family-mamas"></ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-4" data-aos="fade-up">
+          <div class="custom-card p-3 h-100 text-center">
+            <h4 class="text-maroon fw-bold mb-2 border-bottom border-light pb-2 fs-5">आत्या-मामा व काका</h4>
+            <ul class="list-unstyled lh-lg small text-dark" id="family-atyamama-kaka"></ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-4" data-aos="fade-up">
+          <div class="custom-card p-3 h-100 text-center">
+            <h4 class="text-maroon fw-bold mb-2 border-bottom border-light pb-2 fs-5">कार्यवाहक व स्वागताध्यक्ष</h4>
+            <ul class="list-unstyled lh-lg small text-dark" id="family-coordinators-welcome"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4" data-aos="zoom-in">
+        <h3 class="fw-bold text-white bg-maroon rounded-pill px-4 py-2 d-inline-block fs-5 shadow-sm" id="family-name">समस्त परिवार</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & RSVP & Footer -->
+  <section class="pb-0" style="background-color: var(--primary-light);">
+    <div class="container px-3 w-100 mb-5">
+      <div class="row g-4 align-items-stretch">
+        <!-- Location Container -->
+        <div class="col-12 col-lg-6 d-flex flex-column" id="contact" data-aos="fade-up">
+          <div class="text-center text-lg-start mb-3">
+            <h2 class="display-5 fw-bold text-maroon mb-2 fs-2" data-i18n="contact_title">ठिकाण आणि नकाशा</h2>
+            <div class="modern-divider mx-auto mx-lg-0"></div>
+          </div>
+
+          <div class="custom-card p-4 mb-3 text-center text-lg-start">
+            <h4 class="fw-bold mb-2 text-maroon fs-5" data-i18n="contact_venue">विवाहस्थळ</h4>
+            <p id="wedding-venue-name-contact" class="fs-6 mb-1 fw-bold text-dark">Venue</p>
+            <p id="wedding-venue-address-contact" class="text-muted small mb-3">Address</p>
+
+            <a id="map-link-btn" href="#" target="_blank" class="btn btn-gold w-100 text-center d-block">
+              <i class="bi bi-geo-alt-fill me-2"></i> <span data-i18n="contact_open_map">Google Maps मध्ये उघडा</span>
+            </a>
+          </div>
+
+          <div class="custom-card overflow-hidden p-1 shadow-sm flex-grow-1">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.350616147473!2d74.195325!3d19.4835848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd00a6c0c279eb%3A0x67f10b784a51e604!2sSindhu%20Lawns!5e0!3m2!1sen!2sin!4v1716281234567!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style="border:0; border-radius: 25px; display: block; min-height: 250px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- RSVP Container -->
+        <div class="col-12 col-lg-6 d-flex flex-column" id="rsvp" data-aos="fade-up">
+          <div class="text-center text-lg-start mb-3">
+            <h2 class="display-5 fw-bold text-maroon mb-2 fs-2" data-i18n="rsvp_title">RSVP</h2>
+            <div class="modern-divider mx-auto mx-lg-0"></div>
+          </div>
+
+          <div class="custom-card p-4 h-100 flex-grow-1 d-flex flex-column">
+            <p class="text-maroon fw-bold small mb-4 text-center text-lg-start" data-i18n="rsvp_subtitle">आपली उपस्थिती प्रार्थनीय आहे!</p>
+
+            <form id="rsvp-form" class="needs-validation flex-grow-1 d-flex flex-column justify-content-between" novalidate>
+              <div class="row g-3">
+                <div class="col-12">
+                  <input type="text" class="form-control" id="name" name="name" required placeholder="पूर्ण नाव">
+                </div>
+                <div class="col-12">
+                  <input type="tel" class="form-control" id="phone" name="phone" required placeholder="फोन नंबर (+91)">
+                </div>
+
+                <div class="col-12 mt-3">
+                  <label class="form-label fw-bold small text-maroon mb-2" data-i18n="rsvp_attending">तुम्ही उपस्थित राहाल का?</label>
+                  <div class="d-flex flex-column gap-2">
+                    <div class="form-check p-3 custom-card w-100 mx-0 mb-0 d-flex align-items-center" style="cursor: pointer; padding-left: 2.5rem !important;">
+                      <input class="form-check-input ms-0 me-2" type="radio" name="attending" id="attend-yes" value="yes" checked style="margin-left: -1.5rem !important; border-color: var(--primary-color);">
+                      <label class="form-check-label w-100 m-0 small fw-bold" for="attend-yes" data-i18n="rsvp_yes" style="cursor: pointer;">होय, मी नक्की येईन</label>
+                    </div>
+                    <div class="form-check p-3 custom-card w-100 mx-0 mb-0 d-flex align-items-center" style="cursor: pointer; padding-left: 2.5rem !important;">
+                      <input class="form-check-input ms-0 me-2" type="radio" name="attending" id="attend-no" value="no" style="margin-left: -1.5rem !important; border-color: var(--primary-color);">
+                      <label class="form-check-label w-100 m-0 small fw-bold" for="attend-no" data-i18n="rsvp_no" style="cursor: pointer;">क्षमस्व, मी येऊ शकत नाही</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-3">
+                  <textarea class="form-control" id="message" name="message" rows="3" placeholder="आमच्यासाठी संदेश"></textarea>
+                </div>
+              </div>
+
+              <div class="col-12 mt-4 pt-2">
+                <button type="submit" class="btn btn-gold w-100 shadow-sm py-3 rounded-pill"><i class="bi bi-send-fill me-2"></i> <span data-i18n="rsvp_submit">पाठवा</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fluid transparent footer merged with bottom section -->
+    <footer class="footer-custom text-center mt-5 w-100">
+      <div class="container px-3">
+        <h3 class="couple-names mb-2 fw-bold text-maroon fs-4">Bride & Groom</h3>
+        <p class="mb-0 text-muted small fw-bold" data-i18n="footer_text">आमच्या खास दिवसासाठी ❤️ ने बनवले.</p>
+      </div>
+    </footer>
+  </section>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS Animation JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Custom JS -->
+  <script type="module" src="assets/js/main.js"></script>
+
+</body>
+</html>

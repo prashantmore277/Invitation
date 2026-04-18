@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="pt-5 mt-5 bg-light">
+
+  <div id="preloader"><div class="spinner"></div></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="container py-5" data-aos="fade-up">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold text-maroon mb-3" data-i18n="events_title">Wedding Events</h2>
+      <div class="mx-auto" style="width: 50px; height: 3px; background-color: var(--secondary-color);"></div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <!-- Engagement / Haldi -->
+      <div class="col-md-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="custom-card p-4 h-100 text-center border-top border-4 border-warning">
+          <h3 class="fw-bold mb-4 text-maroon" data-i18n="event_engagement">साखरपुडा / हळदी</h3>
+          <div class="mb-3">
+            <span class="d-block fw-bold" data-i18n="event_date">Date</span>
+            <span id="event-engagement-date" class="text-muted">Date</span>
+          </div>
+          <div class="mb-3">
+            <span class="d-block fw-bold" data-i18n="event_time">Time</span>
+            <span id="event-engagement-time" class="text-muted">Time</span>
+          </div>
+          <div class="mb-3">
+            <span class="d-block fw-bold" data-i18n="event_venue">Venue</span>
+            <span id="event-engagement-venue" class="text-muted fw-bold">Venue Name</span>
+            <span id="event-engagement-address" class="d-block text-muted mt-1 small">Address</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding -->
+      <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
+        <div class="custom-card p-4 h-100 text-center border-top border-4 border-danger">
+          <h3 class="fw-bold mb-4 text-maroon" data-i18n="event_wedding">विवाह</h3>
+          <div class="mb-3">
+            <span class="d-block fw-bold" data-i18n="event_date">Date</span>
+            <span id="event-wedding-date" class="text-muted">Date</span>
+          </div>
+          <div class="mb-3">
+            <span class="d-block fw-bold" data-i18n="event_time">Time</span>
+            <span id="event-wedding-time" class="text-muted">Time</span>
+          </div>
+          <div class="mb-3">
+            <span class="d-block fw-bold" data-i18n="event_venue">Venue</span>
+            <span id="event-wedding-venue" class="text-muted fw-bold">Venue Name</span>
+            <span id="event-wedding-address" class="d-block text-muted mt-1 small">Address</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

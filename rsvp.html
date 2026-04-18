@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSVP</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="pt-5 mt-5 bg-light">
+
+  <div id="preloader"><div class="spinner"></div></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="container py-5" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10">
+        <div class="custom-card p-5">
+          <div class="text-center mb-5">
+            <h2 class="display-4 fw-bold text-maroon mb-3" data-i18n="rsvp_title">RSVP</h2>
+            <div class="mx-auto mb-3" style="width: 50px; height: 3px; background-color: var(--secondary-color);"></div>
+            <p class="text-muted fs-5" data-i18n="rsvp_subtitle">आपली उपस्थिती प्रार्थनीय आहे!</p>
+          </div>
+
+          <form id="rsvp-form" class="needs-validation" novalidate>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label for="name" class="form-label fw-bold" data-i18n="rsvp_name">पूर्ण नाव</label>
+                <input type="text" class="form-control form-control-lg bg-light" id="name" name="name" required placeholder="John Doe">
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label fw-bold" data-i18n="rsvp_phone">फोन नंबर</label>
+                <input type="tel" class="form-control form-control-lg bg-light" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                <div class="invalid-feedback">Please enter your phone number.</div>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label fw-bold" data-i18n="rsvp_attending">तुम्ही उपस्थित राहाल का?</label>
+                <div class="d-flex gap-4">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="attending" id="attend-yes" value="yes" checked>
+                    <label class="form-check-label" for="attend-yes" data-i18n="rsvp_yes">होय, मी नक्की येईन</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="attending" id="attend-no" value="no">
+                    <label class="form-check-label" for="attend-no" data-i18n="rsvp_no">क्षमस्व, मी येऊ शकत नाही</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="message" class="form-label fw-bold" data-i18n="rsvp_message">आमच्यासाठी संदेश</label>
+                <textarea class="form-control bg-light" id="message" name="message" rows="4" placeholder="Best wishes!"></textarea>
+              </div>
+
+              <div class="col-12 text-center mt-5">
+                <button type="submit" class="btn btn-gold btn-lg px-5 py-3 rounded-pill fw-bold w-100 shadow-sm" data-i18n="rsvp_submit">पाठवा</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+  <script>
+    // Simple form validation
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
+</body>
+</html>

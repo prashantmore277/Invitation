@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bride & Groom</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="pt-5 mt-5">
+
+  <div id="preloader"><div class="spinner"></div></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="container py-5" data-aos="fade-up">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold text-gold" data-i18n="couple_title">वधू आणि वर</h2>
+      <div class="divider mx-auto bg-maroon" style="width: 60px; height: 3px;"></div>
+    </div>
+
+    <!-- Bride Section -->
+    <div class="row g-5 align-items-center mb-5">
+      <div class="col-md-6 order-md-2" data-aos="fade-left">
+        <div class="text-center bg-white p-5 rounded-4 shadow-sm h-100">
+          <h3 class="display-5 fw-bold mb-3 text-maroon" id="bride-name">Bride Name</h3>
+          <p class="text-muted fst-italic mb-4" data-i18n="bride_daughter_of">सुवासिनी</p>
+          <h5 id="bride-father">Father Name</h5>
+          <h5 id="bride-mother">Mother Name</h5>
+          <p class="mt-4 lh-lg text-secondary" id="bride-desc">Description</p>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded-4 shadow" alt="Bride">
+      </div>
+    </div>
+
+    <!-- Groom Section -->
+    <div class="row g-5 align-items-center">
+      <div class="col-md-6" data-aos="fade-right">
+        <div class="text-center bg-white p-5 rounded-4 shadow-sm h-100">
+          <h3 class="display-5 fw-bold mb-3 text-maroon" id="groom-name">Groom Name</h3>
+          <p class="text-muted fst-italic mb-4" data-i18n="groom_son_of">चिरंजीव</p>
+          <h5 id="groom-father">Father Name</h5>
+          <h5 id="groom-mother">Mother Name</h5>
+          <p class="mt-4 lh-lg text-secondary" id="groom-desc">Description</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded-4 shadow" alt="Groom">
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

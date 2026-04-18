@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gallery - Vedant & Nikita</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Fancybox CSS for Lightbox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="bg-light pt-5 mt-5">
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top py-2">
+    <div class="container-fluid px-3 px-md-4">
+      <a class="navbar-brand fw-bold fs-4 m-0 d-flex align-items-center" href="index.html" id="nav-brand-link">
+        <img id="nav-logo" src="" alt="Logo" class="logo-img me-2 d-none">
+      </a>
+
+      <div class="d-flex align-items-center gap-2 d-lg-none">
+        <button id="langToggleBtnMobile" class="btn btn-sm btn-gold rounded-pill px-3 shadow-sm" onclick="window.toggleLanguage()">EN</button>
+        <button class="navbar-toggler border-0 shadow-none p-1 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <i class="bi bi-list fs-1 text-maroon"></i>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center gap-2 gap-lg-4 text-center mt-3 mt-lg-0">
+          <li class="nav-item w-100"><a class="nav-link w-100" href="index.html#home" data-i18n="nav_home">Home</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="index.html#couple" data-i18n="nav_couple">Couple</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="index.html#events" data-i18n="nav_events">Events</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="index.html#family" data-i18n="nav_family">Family</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100 active" href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="index.html#contact" data-i18n="nav_contact">Location</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="index.html#rsvp" data-i18n="nav_rsvp">RSVP</a></li>
+          <li class="nav-item ms-lg-2 d-none d-lg-block">
+            <button id="langToggleBtnDesktop" class="btn btn-gold rounded-pill px-4 py-2 shadow-sm" onclick="window.toggleLanguage()">EN</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="container-fluid px-3 px-md-5 py-4 py-md-5">
+    <div class="text-center mb-4" data-aos="fade-up">
+      <h2 class="display-4 fw-bold text-maroon mb-2" data-i18n="gallery_title">आमची गॅलरी</h2>
+      <div class="modern-divider mb-4"></div>
+      <p class="d-inline-block bg-white text-maroon px-4 py-2 rounded-pill shadow-sm small fw-bold mt-2">
+        <i class="bi bi-hand-index-thumb me-2"></i><span data-i18n="gallery_suggestion">Click any photo to start the automated slideshow</span>
+      </p>
+    </div>
+
+    <!-- Dynamic Tabs Container -->
+    <div class="d-flex justify-content-center flex-wrap mb-4 gallery-nav-pills" id="gallery-tabs-container" data-aos="fade-up">
+       <!-- Tabs injected via JS -->
+    </div>
+
+    <!-- Dynamic Content Container -->
+    <div id="gallery-content-container" class="mt-4">
+      <!-- Masonry grids injected via JS -->
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-custom text-center mt-5">
+    <div class="container px-3">
+      <h3 class="couple-names mb-2 fw-bold text-maroon fs-4">Bride & Groom</h3>
+      <p class="mb-0 text-muted small fw-bold" data-i18n="footer_text">आमच्या खास दिवसासाठी ❤️ ने बनवले.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script type="module">
+    import { config } from './config/siteConfig.js';
+    let currentLang = config.languages.default;
+    let langData = {};
+
+    async function loadLanguage(lang) {
+      try {
+        const response = await fetch(`lang/${lang}.json`);
+        langData = await response.json();
+
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (langData[key]) element.textContent = langData[key];
+        });
+
+        // Specifically update dynamic gallery tab titles when language switches
+        if(config.gallery && Array.isArray(config.gallery)) {
+          config.gallery.forEach(tab => {
+            const tabBtn = document.getElementById(`tab-btn-${tab.id}`);
+            if(tabBtn) {
+              tabBtn.textContent = currentLang === 'en' ? tab.title_en : tab.title_mr;
+            }
+          });
+        }
+
+      } catch (error) {
+        console.error("Error loading language file:", error);
+      }
+    }
+
+    window.toggleLanguage = function() {
+      const currentIndex = config.languages.supported.indexOf(currentLang);
+      const nextIndex = (currentIndex + 1) % config.languages.supported.length;
+      currentLang = config.languages.supported[nextIndex];
+      const btnDesktop = document.getElementById('langToggleBtnDesktop');
+      const btnMobile = document.getElementById('langToggleBtnMobile');
+      const langText = currentLang === 'en' ? 'MR' : 'EN';
+      if(btnDesktop) btnDesktop.textContent = langText;
+      if(btnMobile) btnMobile.textContent = langText;
+      loadLanguage(currentLang);
+      populateNames();
+    };
+
+    function populateNames() {
+      const separator = currentLang === 'mr' ? ' व ' : ' & ';
+      const coupleNames = `${config.groom.name}${separator}${config.bride.name}`;
+      document.querySelectorAll('.couple-names').forEach(el => {
+        // Only set text if it's not the logo link which we handle below
+        if(el.id !== 'nav-brand-link') {
+           el.textContent = coupleNames;
+        }
+      });
+
+      const navLogo = document.getElementById('nav-logo');
+      if (config.logo && navLogo) {
+        navLogo.src = config.logo;
+        navLogo.classList.remove('d-none');
+      }
+    }
+
+    function loadDynamicGallery() {
+      const tabsContainer = document.getElementById('gallery-tabs-container');
+      const contentContainer = document.getElementById('gallery-content-container');
+
+      if(!config.gallery || !Array.isArray(config.gallery)) return;
+
+      // Filter out tabs with 0 count
+      const activeTabs = config.gallery.filter(tab => tab.count > 0);
+
+      if(activeTabs.length === 0) {
+        contentContainer.innerHTML = `<div class="text-center text-muted w-100 p-5"><p>No photos available at the moment.</p></div>`;
+        return;
+      }
+
+      // Generate Tabs HTML
+      let tabsHTML = '';
+      let contentHTML = '';
+
+      activeTabs.forEach((tab, index) => {
+        const isActive = index === 0 ? 'active' : '';
+        const title = currentLang === 'en' ? tab.title_en : tab.title_mr;
+
+        // Build the pill button
+        tabsHTML += `<button class="nav-link ${isActive}" id="tab-btn-${tab.id}" data-target-id="content-${tab.id}" onclick="switchTab('${tab.id}')">${title}</button>`;
+
+        // Build the masonry grid for this tab
+        let gridHTML = `<div id="content-${tab.id}" class="gallery-grid ${isActive ? '' : 'd-none'}">`;
+
+        for(let i = 1; i <= tab.count; i++) {
+          const prefix = tab.prefix || "";
+          const suffix = tab.suffix || "";
+          const imgSrc = `${tab.folder}/${prefix}${i}${suffix}${tab.extension}`;
+
+          gridHTML += `
+            <div data-aos="fade-up" data-aos-offset="50" data-aos-delay="${(i%4)*50}">
+              <a href="${imgSrc}" data-fancybox="${tab.id}">
+                <div class="gallery-item">
+                  <img src="${imgSrc}" class="gallery-img" alt="${title} ${i}" loading="lazy" onerror="this.parentElement.parentElement.parentElement.style.display='none'">
+                  <div class="gallery-overlay">
+                    <div class="play-icon">
+                      <i class="bi bi-play-fill text-white fs-2"></i>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          `;
+        }
+
+        gridHTML += `</div>`;
+        contentHTML += gridHTML;
+      });
+
+      tabsContainer.innerHTML = tabsHTML;
+      contentContainer.innerHTML = contentHTML;
+    }
+
+    // Global function to handle tab switching
+    window.switchTab = function(targetId) {
+      // Deactivate all buttons
+      document.querySelectorAll('.gallery-nav-pills .nav-link').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Hide all contents
+      document.querySelectorAll('.gallery-grid').forEach(grid => {
+        grid.classList.add('d-none');
+      });
+
+      // Activate clicked button and content
+      const clickedBtn = document.getElementById(`tab-btn-${targetId}`);
+      const targetContent = document.getElementById(`content-${targetId}`);
+
+      if(clickedBtn) clickedBtn.classList.add('active');
+      if(targetContent) {
+        targetContent.classList.remove('d-none');
+        // Refresh AOS to handle newly visible elements
+        if(typeof AOS !== 'undefined') {
+          setTimeout(() => { AOS.refresh(); }, 100);
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadLanguage(currentLang);
+      populateNames();
+      loadDynamicGallery();
+
+      const btnDesktop = document.getElementById('langToggleBtnDesktop');
+      const btnMobile = document.getElementById('langToggleBtnMobile');
+      const langText = currentLang === 'en' ? 'MR' : 'EN';
+      if(btnDesktop) btnDesktop.textContent = langText;
+      if(btnMobile) btnMobile.textContent = langText;
+    });
+
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+          if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+        }, 500);
+      }
+
+      Fancybox.bind("[data-fancybox]", {
+        Carousel: { infinite: true },
+        Toolbar: {
+          display: {
+            left: ["infobar"],
+            middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY"],
+            right: ["slideshow", "thumbs", "close"],
+          },
+        },
+        on: {
+          ready: (fancybox) => {
+            setTimeout(() => { fancybox.plugins.Slideshow.start(); }, 500);
+          }
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar-custom');
+      if (window.scrollY > 10) {
+        nav.style.background = 'rgba(252, 251, 254, 0.9)';
+        nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+      } else {
+        nav.style.background = 'rgba(252, 251, 254, 0.3)';
+        nav.style.boxShadow = 'none';
+        nav.style.borderBottom = '1px solid rgba(255, 255, 255, 0.6)';
+      }
+    });
+
+    // Scroll to Top Button (replicated here since gallery page doesn't run full main.js)
+    const scrollTopBtn = document.createElement('button');
+    scrollTopBtn.innerHTML = '<i class="bi bi-arrow-up-short"></i>';
+    scrollTopBtn.className = 'btn btn-gold rounded-circle shadow-lg position-fixed bottom-0 end-0 m-4 d-none';
+    scrollTopBtn.style.zIndex = '999';
+    scrollTopBtn.style.width = '50px';
+    scrollTopBtn.style.height = '50px';
+    scrollTopBtn.style.fontSize = '24px';
+    scrollTopBtn.style.display = 'flex';
+    scrollTopBtn.style.alignItems = 'center';
+    scrollTopBtn.style.justifyContent = 'center';
+    document.body.appendChild(scrollTopBtn);
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.remove('d-none');
+        scrollTopBtn.style.opacity = '1';
+      } else {
+        scrollTopBtn.style.opacity = '0';
+        setTimeout(() => {
+          if(window.scrollY <= 300) scrollTopBtn.classList.add('d-none');
+        }, 300);
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

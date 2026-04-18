@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="pt-5 mt-5 bg-light">
+
+  <div id="preloader"><div class="spinner"></div></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="container py-5" data-aos="fade-up">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold text-maroon mb-3" data-i18n="contact_title">ठिकाण आणि नकाशा</h2>
+      <div class="mx-auto" style="width: 50px; height: 3px; background-color: var(--secondary-color);"></div>
+    </div>
+
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="custom-card p-5 h-100">
+          <h3 class="fw-bold mb-4 text-maroon border-bottom pb-3" data-i18n="contact_venue">विवाहस्थळ</h3>
+
+          <div class="mb-4">
+            <h5 class="fw-bold text-dark mb-1">विवाहस्थळ</h5>
+            <p id="wedding-venue-name" class="fs-5 mb-1 text-secondary">The Grand Royal Palace</p>
+            <p id="wedding-venue-address" class="text-muted small">123 Royal Street, Wedding City, Country 45678</p>
+          </div>
+
+          <div class="mb-4">
+            <h5 class="fw-bold text-dark mb-1">संपर्क</h5>
+            <p id="contact-email" class="mb-1 text-secondary"><i class="bi bi-envelope me-2"></i>contact@wedding.com</p>
+            <p id="contact-phone" class="text-secondary"><i class="bi bi-telephone me-2"></i>+1 234 567 890</p>
+          </div>
+
+          <a id="map-link-btn" href="#" target="_blank" class="btn btn-gold btn-lg px-4 py-2 rounded-pill fw-bold shadow-sm mt-3 w-100 d-inline-block text-center text-decoration-none">
+            <span data-i18n="contact_open_map">Google Maps मध्ये उघडा</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="custom-card overflow-hidden h-100">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.350616147473!2d74.195325!3d19.4835848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdd00a6c0c279eb%3A0x67f10b784a51e604!2sSindhu%20Lawns!5e0!3m2!1sen!2sin!4v1716281234567!5m2!1sen!2sin"
+            width="100%"
+            height="450"
+            style="border:0; display: block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+  <script type="module">
+    import { config } from './config/siteConfig.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Small timeout to let main.js finish populating
+      setTimeout(() => {
+        const wvName = document.getElementById('wedding-venue-name');
+        if(wvName) wvName.textContent = config.wedding.venue;
+
+        const wvAddr = document.getElementById('wedding-venue-address');
+        if(wvAddr) wvAddr.textContent = config.wedding.address;
+
+        const cEmail = document.getElementById('contact-email');
+        if(cEmail && config.contact && config.contact.email) cEmail.innerHTML = `<i class="bi bi-envelope me-2"></i>${config.contact.email}`;
+
+        const cPhone = document.getElementById('contact-phone');
+        if(cPhone && config.contact && config.contact.phone) cPhone.innerHTML = `<i class="bi bi-telephone me-2"></i>${config.contact.phone}`;
+
+        const mapLinkBtn = document.getElementById('map-link-btn');
+        if(mapLinkBtn && config.wedding.mapLink) mapLinkBtn.href = config.wedding.mapLink;
+      }, 100);
+    });
+  </script>
+</body>
+</html>

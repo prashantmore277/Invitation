@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="pt-5 mt-5 bg-light">
+
+  <div id="preloader"><div class="spinner"></div></div>
+  <div id="navbar-placeholder"></div>
+
+  <section class="container py-5" data-aos="fade-up">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold text-maroon mb-3" data-i18n="family_title">आमचे परिवार</h2>
+      <div class="mx-auto" style="width: 50px; height: 3px; background-color: var(--secondary-color);"></div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6" data-aos="fade-up">
+        <div class="custom-card p-4 h-100">
+          <h4 class="text-maroon text-center fw-bold mb-4 border-bottom pb-2">आपले नम्र (वर पक्ष)</h4>
+          <ul class="list-unstyled text-center lh-lg" id="inviting-families-groom">
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="custom-card p-4 h-100">
+          <h4 class="text-maroon text-center fw-bold mb-4 border-bottom pb-2">आपले नम्र (वधू पक्ष)</h4>
+          <ul class="list-unstyled text-center lh-lg" id="inviting-families-bride">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-3">
+      <div class="col-md-4" data-aos="fade-up">
+        <div class="custom-card p-4 h-100 text-center">
+          <h4 class="text-maroon fw-bold mb-3 border-bottom pb-2">मामा</h4>
+          <ul class="list-unstyled lh-lg" id="family-mamas"></ul>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="custom-card p-4 h-100 text-center">
+          <h4 class="text-maroon fw-bold mb-3 border-bottom pb-2">आत्या-मामा व काका</h4>
+          <ul class="list-unstyled lh-lg" id="family-atyamama-kaka"></ul>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="custom-card p-4 h-100 text-center">
+          <h4 class="text-maroon fw-bold mb-3 border-bottom pb-2">कार्यवाहक व स्वागताध्यक्ष</h4>
+          <ul class="list-unstyled lh-lg" id="family-coordinators-welcome"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5" data-aos="zoom-in">
+      <h3 class="fw-bold text-gold" id="family-name">समस्त परिवार</h3>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
