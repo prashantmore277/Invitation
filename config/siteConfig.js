@@ -67,8 +67,11 @@ export const config = {
   },
   contact: {
     email: "contact@wedding.com",
-    phone: "+91 96992 58767" // Updated to the specified number
+    phone: "+91 96992 58767"
   },
+  // Guestbook Google Sheet integration
+  guestbookAPI: "https://script.google.com/macros/s/AKfycbzEQrSs96PdRYqO2oyVRqV5GAtY5qT17vi6kW5jmlrPtiNkFEX5SN_vLQO-wg5-ers71g/exec",
+
   family: {
     invitingFamiliesGroom: [
       "सौ. कमल व श्री. मधुकर मुरलीधर बांबळे",

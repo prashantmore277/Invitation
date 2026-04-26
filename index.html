@@ -10,7 +10,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
   <style>
@@ -60,6 +60,7 @@
           <!-- Family section hidden here as well -->
           <li class="nav-item w-100 d-none"><a class="nav-link w-100" href="#family" data-i18n="nav_family">Family</a></li>
           <li class="nav-item w-100" id="nav-gallery-item"><a class="nav-link w-100" href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+          <li class="nav-item w-100"><a class="nav-link w-100" href="#guestbook" data-i18n="wishes_title">Guestbook</a></li>
           <li class="nav-item w-100"><a class="nav-link w-100" href="#contact" data-i18n="nav_contact">Location</a></li>
           <li class="nav-item w-100"><a class="nav-link w-100" href="#rsvp" data-i18n="nav_rsvp">RSVP</a></li>
           <li class="nav-item ms-lg-2 d-none d-lg-block">
@@ -206,53 +207,55 @@
     </div>
   </section>
 
-  <!-- Family Section (HIDDEN but code kept intact) -->
-  <section id="family" class="container mt-4 d-none">
+  <!-- Guestbook & Scratch Card Section -->
+  <section id="guestbook" class="container mt-4">
     <div class="w-100">
-      <div class="text-center mb-4" data-aos="fade-up">
-        <h2 class="display-5 fw-bold text-maroon mb-2" data-i18n="family_title">आमचे परिवार</h2>
+      <div class="text-center mb-4 mb-md-5" data-aos="fade-up">
+        <h2 class="display-5 fw-bold text-maroon mb-2" data-i18n="wishes_title">Guestbook</h2>
         <div class="modern-divider"></div>
+        <p class="text-muted mt-2 small fw-bold" data-i18n="wishes_subtitle">Leave a little sparkle wherever you go! ✨</p>
       </div>
 
-      <div class="row g-3 g-md-4">
-        <div class="col-12 col-md-6" data-aos="fade-up">
-          <div class="custom-card p-3 p-md-4 h-100">
-            <h4 class="text-maroon text-center fw-bold mb-3 border-bottom border-light pb-2 fs-5">आपले नम्र (वर पक्ष)</h4>
-            <ul class="list-unstyled text-center lh-lg fw-medium small text-dark" id="inviting-families-groom"></ul>
+      <div class="row g-4 g-md-5 align-items-center">
+        <!-- Interactive Scratch Card -->
+        <div class="col-12 col-lg-5" data-aos="fade-right">
+          <div class="custom-card p-4 text-center h-100 d-flex flex-column justify-content-center align-items-center">
+            <h4 class="text-maroon fw-bold mb-2" data-i18n="scratch_title">A Special Surprise!</h4>
+            <p class="text-muted small mb-4" data-i18n="scratch_subtitle">Scratch below to reveal a secret message from the couple ❤️</p>
+
+            <div class="scratch-container mx-auto">
+              <!-- Base Layer (The Reveal) -->
+              <div class="scratch-base text-center">
+                 <h5 class="text-maroon fw-bold lh-base m-0" data-i18n="scratch_reveal_text">Thank you for being part of our journey! Your presence means the world to us.</h5>
+              </div>
+              <!-- Scratch Canvas Overlay -->
+              <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
+            </div>
           </div>
         </div>
 
-        <div class="col-12 col-md-6" data-aos="fade-up">
-          <div class="custom-card p-3 p-md-4 h-100">
-            <h4 class="text-maroon text-center fw-bold mb-3 border-bottom border-light pb-2 fs-5">आपले नम्र (वधू पक्ष)</h4>
-            <ul class="list-unstyled text-center lh-lg fw-medium small text-dark" id="inviting-families-bride"></ul>
-          </div>
-        </div>
-      </div>
+        <!-- Dynamic Guestbook Wall (Loads from Google Sheets) -->
+        <div class="col-12 col-lg-7" data-aos="fade-left">
+           <div class="brick-wall-bg">
+             <div class="row g-3" id="guestbook-wall-container">
 
-      <div class="row g-3 g-md-4 mt-2">
-        <div class="col-12 col-md-4" data-aos="fade-up">
-          <div class="custom-card p-3 h-100 text-center">
-            <h4 class="text-maroon fw-bold mb-2 border-bottom border-light pb-2 fs-5">मामा</h4>
-            <ul class="list-unstyled lh-lg small text-dark" id="family-mamas"></ul>
-          </div>
-        </div>
-        <div class="col-12 col-md-4" data-aos="fade-up">
-          <div class="custom-card p-3 h-100 text-center">
-            <h4 class="text-maroon fw-bold mb-2 border-bottom border-light pb-2 fs-5">आत्या-मामा व काका</h4>
-            <ul class="list-unstyled lh-lg small text-dark" id="family-atyamama-kaka"></ul>
-          </div>
-        </div>
-        <div class="col-12 col-md-4" data-aos="fade-up">
-          <div class="custom-card p-3 h-100 text-center">
-            <h4 class="text-maroon fw-bold mb-2 border-bottom border-light pb-2 fs-5">कार्यवाहक व स्वागताध्यक्ष</h4>
-            <ul class="list-unstyled lh-lg small text-dark" id="family-coordinators-welcome"></ul>
-          </div>
-        </div>
-      </div>
+               <!-- Default Loading / Instructions Note -->
+               <div class="col-12 col-sm-6 mx-auto">
+                  <div class="sticky-note color-1 h-100 text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 180px;">
+                    <div id="guestbook-loading">
+                      <div class="spinner-border text-maroon mb-2" role="status"></div>
+                      <p class="mb-0 fw-bold">Loading Wishes...</p>
+                    </div>
+                    <div id="guestbook-empty" class="d-none">
+                      <i class="bi bi-envelope-paper-heart fs-1 text-maroon mb-2"></i>
+                      <p class="mb-0 fw-bold text-dark" style="font-family: var(--font-body);">Use the form below to send your wishes. They will magically appear here!</p>
+                    </div>
+                  </div>
+               </div>
 
-      <div class="text-center mt-4" data-aos="zoom-in">
-        <h3 class="fw-bold text-white bg-maroon rounded-pill px-4 py-2 d-inline-block fs-5 shadow-sm" id="family-name">समस्त परिवार</h3>
+             </div>
+           </div>
+        </div>
       </div>
     </div>
   </section>
@@ -336,7 +339,11 @@
               </div>
 
               <div class="col-12 mt-4 pt-2">
-                <button type="submit" class="btn btn-gold w-100 shadow-sm py-3 rounded-pill"><i class="bi bi-whatsapp me-2"></i> <span data-i18n="rsvp_submit">पाठवा</span></button>
+                <!-- Change to dual submission (Google Sheet + WhatsApp) via JS logic -->
+                <button type="submit" id="submit-btn" class="btn btn-gold w-100 shadow-sm py-3 rounded-pill">
+                  <span id="submit-btn-text"><i class="bi bi-send-fill me-2"></i> <span data-i18n="rsvp_submit">पाठवा</span></span>
+                  <div class="spinner-border spinner-border-sm text-light d-none" id="submit-spinner" role="status"></div>
+                </button>
               </div>
             </form>
           </div>
@@ -362,11 +369,13 @@
   <!-- Custom JS -->
   <script type="module" src="assets/js/main.js"></script>
 
-  <script>
+  <script type="module">
+    import { config } from './config/siteConfig.js';
+
     // Set message from suggestion chips
-    function setMessage(i18nKey) {
+    window.setMessage = function(i18nKey) {
       const textarea = document.getElementById('message');
-      const langData = window.currentLangData; // Made accessible from main.js
+      const langData = window.currentLangData;
 
       if(textarea && langData && langData[i18nKey]) {
         textarea.value = langData[i18nKey];
@@ -375,7 +384,223 @@
         document.querySelectorAll('.msg-suggestion').forEach(el => el.classList.remove('active'));
         event.currentTarget.classList.add('active');
       }
+    };
+
+    // Google Sheets Guestbook Logic
+    async function fetchGuestbookMessages() {
+      const container = document.getElementById('guestbook-wall-container');
+      const loadingEl = document.getElementById('guestbook-loading');
+      const emptyEl = document.getElementById('guestbook-empty');
+
+      const apiURL = config.guestbookAPI;
+
+      if (!apiURL || apiURL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+        if(loadingEl) loadingEl.classList.add('d-none');
+        if(emptyEl) emptyEl.classList.remove('d-none');
+        return; // API not configured yet
+      }
+
+      try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+
+        if (data && data.length > 0) {
+           let html = '';
+           // Define stick note colors available in CSS
+           const colors = ['color-1', 'color-2', 'color-3', 'color-4'];
+
+           // Take only the latest 4-6 messages to not overload the wall
+           const recentMessages = data.slice(-6).reverse();
+
+           recentMessages.forEach((msg, index) => {
+             const colorClass = colors[index % colors.length];
+             // Hide some on mobile to save space
+             const displayClass = index > 1 ? 'd-none d-sm-block' : '';
+
+             html += `
+               <div class="col-12 col-sm-6 ${displayClass}">
+                  <div class="sticky-note ${colorClass}">
+                    <p class="mb-3 text-dark">"${msg.message}"</p>
+                    <p class="text-end text-muted fw-bold mb-0" style="font-family: var(--font-body); font-size: 0.9rem;">- ${msg.name}</p>
+                  </div>
+               </div>
+             `;
+           });
+           container.innerHTML = html;
+        } else {
+           if(loadingEl) loadingEl.classList.add('d-none');
+           if(emptyEl) emptyEl.classList.remove('d-none');
+        }
+      } catch (error) {
+        console.error("Error fetching guestbook:", error);
+        if(loadingEl) loadingEl.classList.add('d-none');
+        if(emptyEl) emptyEl.classList.remove('d-none');
+      }
     }
+
+    // Initialize Guestbook on load
+    document.addEventListener("DOMContentLoaded", () => {
+      fetchGuestbookMessages();
+    });
+
+    // Overriding the default RSVP submit inside main.js to handle Dual Submit
+    document.addEventListener('DOMContentLoaded', () => {
+      const rsvpForm = document.getElementById('rsvp-form');
+      if (rsvpForm) {
+        // Clone and replace to kill original event listeners attached in main.js
+        const newForm = rsvpForm.cloneNode(true);
+        rsvpForm.parentNode.replaceChild(newForm, rsvpForm);
+
+        newForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!newForm.checkValidity()) {
+              e.stopPropagation();
+              newForm.classList.add('was-validated');
+              return;
+          }
+
+          const formData = new FormData(newForm);
+          const name = formData.get('name');
+          const messageVal = formData.get('message');
+
+          const btnText = document.getElementById('submit-btn-text');
+          const btnSpinner = document.getElementById('submit-spinner');
+          const btn = document.getElementById('submit-btn');
+
+          // UI Loading state
+          if(btnText) btnText.classList.add('d-none');
+          if(btnSpinner) btnSpinner.classList.remove('d-none');
+          btn.disabled = true;
+
+          // 1. Send data to Google Sheet silently (if configured)
+          const apiURL = config.guestbookAPI;
+          if (apiURL && apiURL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+             try {
+                // Post data
+                await fetch(apiURL, {
+                  method: 'POST',
+                  mode: 'no-cors', // required for simple google scripts without complex CORS setup
+                  cache: 'no-cache',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ name: name, message: messageVal })
+                });
+                // Wait a second then refresh guestbook
+                setTimeout(fetchGuestbookMessages, 2000);
+             } catch(err) {
+                console.log("Sheet save error ignored.", err);
+             }
+          }
+
+          // Restore UI
+          if(btnText) btnText.classList.remove('d-none');
+          if(btnSpinner) btnSpinner.classList.add('d-none');
+          btn.disabled = false;
+
+          // 2. Fallback WhatsApp Launch (still sends directly to your phone)
+          const cleanNumber = config.contact.phone.replace(/[^\d+]/g, '');
+          const waNumber = cleanNumber.startsWith('+') ? cleanNumber.substring(1) : cleanNumber;
+          const text = `*RSVP for Wedding* 💍%0A%0A*Name:* ${name}%0A*Attending:* Yes, I will be there!%0A*Message:* ${messageVal}`;
+          const whatsappLink = `https://wa.me/${waNumber}?text=${text}`;
+
+          window.open(whatsappLink, '_blank');
+
+          setTimeout(() => {
+            newForm.reset();
+            newForm.classList.remove('was-validated');
+            document.querySelectorAll('.msg-suggestion').forEach(el => el.classList.remove('active'));
+          }, 500);
+
+        }, false);
+      }
+    });
+
+    // Scratch Card Logic (Integrated into index.html context)
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById("scratch-canvas");
+      if(!canvas) return;
+      const ctx = canvas.getContext("2d");
+
+      // Handle resize to match container
+      function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        fillCanvas();
+      }
+
+      function fillCanvas() {
+        // Create an elegant cover pattern
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, "#C5A059"); // Gold
+        gradient.addColorStop(1, "#D4AF37"); // Light Gold
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Add text on top of scratch area
+        ctx.font = "bold 22px 'Mukta', sans-serif";
+        ctx.fillStyle = "#ffffff";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Scratch Here ✨", canvas.width / 2, canvas.height / 2);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      let isDrawing = false;
+
+      function getCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      function scratch(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        const { x, y } = getCoordinates(e);
+
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 30, 0, 2 * Math.PI); // Brush size
+        ctx.fill();
+
+        checkReveal();
+      }
+
+      // Calculate how much has been scratched off
+      function checkReveal() {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+        let transparentPixels = 0;
+
+        for (let i = 3; i < pixels.length; i += 4) {
+          if (pixels[i] === 0) transparentPixels++;
+        }
+
+        const percentage = (transparentPixels / (pixels.length / 4)) * 100;
+
+        // Auto-reveal if > 50% scratched
+        if (percentage > 50) {
+          canvas.style.transition = "opacity 0.8s ease";
+          canvas.style.opacity = "0";
+          setTimeout(() => { canvas.style.display = "none"; }, 800);
+        }
+      }
+
+      canvas.addEventListener("mousedown", (e) => { isDrawing = true; scratch(e); });
+      canvas.addEventListener("mousemove", scratch);
+      window.addEventListener("mouseup", () => isDrawing = false);
+
+      canvas.addEventListener("touchstart", (e) => { isDrawing = true; scratch(e); }, { passive: false });
+      canvas.addEventListener("touchmove", scratch, { passive: false });
+      window.addEventListener("touchend", () => isDrawing = false);
+    });
   </script>
 
 </body>

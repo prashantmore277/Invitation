@@ -8,6 +8,7 @@ async function loadLanguage(lang) {
   try {
     const response = await fetch(`lang/${lang}.json`);
     langData = await response.json();
+    window.currentLangData = langData; // Ensure accessible globally for embedded scripts
     applyLanguage();
   } catch (error) {
     console.error("Error loading language file:", error);
@@ -322,7 +323,8 @@ if (rsvpForm) {
         const waNumber = cleanNumber.startsWith('+') ? cleanNumber.substring(1) : cleanNumber;
 
         // Create the pre-filled message text
-        const text = `*RSVP for Wedding* 💍%0A%0A*Name:* ${name}%0A*Attending:* Yes, I will be there!`;
+        const messageVal = document.getElementById('message').value || "Best Wishes!";
+        const text = `*RSVP for Wedding* 💍%0A%0A*Name:* ${name}%0A*Attending:* Yes, I will be there!%0A*Message:* ${messageVal}`;
 
         // WhatsApp direct link with specific phone number
         const whatsappLink = `https://wa.me/${waNumber}?text=${text}`;
@@ -335,6 +337,8 @@ if (rsvpForm) {
           alert(currentLang === 'mr' ? "तुमचा प्रतिसाद WhatsApp द्वारे पाठवण्यासाठी तयार आहे!" : "Your RSVP is ready to be sent via WhatsApp!");
           rsvpForm.reset();
           rsvpForm.classList.remove('was-validated');
+          // clear active chips
+          document.querySelectorAll('.msg-suggestion').forEach(el => el.classList.remove('active'));
         }, 500);
         return;
     }
