@@ -78,34 +78,53 @@ function populateData() {
   const heroDateEl = document.getElementById('hero-wedding-date');
   if(heroDateEl) heroDateEl.textContent = currentLang === 'mr' ? "०३ मे २०२६" : "03 May 2026";
 
-  // Couple
+  // Couple Section Fixes (Grandparents & Families added properly)
   const groomNameEl = document.getElementById('groom-name');
   if(groomNameEl) groomNameEl.textContent = config.groom.fullName;
+
   const gRelation = document.getElementById('groom-relation');
   if(gRelation) gRelation.textContent = config.groom.relation;
+
   const gFather = document.getElementById('groom-father');
   if(gFather) gFather.textContent = config.groom.fatherName;
+
   const gMother = document.getElementById('groom-mother');
   if(gMother) gMother.textContent = config.groom.motherName;
+
   const gGrandparents = document.getElementById('groom-grandparents');
   if(gGrandparents) gGrandparents.textContent = config.groom.grandparents;
+
   const gDesc = document.getElementById('groom-desc');
-  if(gDesc) gDesc.innerHTML = `${config.groom.address}<br><br><strong class="text-maroon">${config.groom.family}</strong>`;
+  if(gDesc) {
+    gDesc.innerHTML = `<span class="d-block mb-1 text-dark fw-bold">${config.groom.grandparents}</span>
+                       <span class="d-block mb-3">${config.groom.address}</span>
+                       <strong class="text-maroon fs-5 bg-white px-3 py-1 rounded-pill shadow-sm border d-inline-block">${config.groom.family}</strong>`;
+  }
   const groomImgEl = document.getElementById('groom-photo');
   if(groomImgEl && config.groom.photo) groomImgEl.src = config.groom.photo;
 
+  // Bride Fixes
   const brideNameEl = document.getElementById('bride-name');
   if(brideNameEl) brideNameEl.textContent = config.bride.fullName;
+
   const bRelation = document.getElementById('bride-relation');
   if(bRelation) bRelation.textContent = config.bride.relation;
+
   const bFather = document.getElementById('bride-father');
   if(bFather) bFather.textContent = config.bride.fatherName;
+
   const bMother = document.getElementById('bride-mother');
   if(bMother) bMother.textContent = config.bride.motherName;
+
   const bGrandparents = document.getElementById('bride-grandparents');
   if(bGrandparents) bGrandparents.textContent = config.bride.grandparents;
+
   const bDesc = document.getElementById('bride-desc');
-  if(bDesc) bDesc.innerHTML = `${config.bride.address}<br><br><strong class="text-maroon">${config.bride.family}</strong>`;
+  if(bDesc) {
+    bDesc.innerHTML = `<span class="d-block mb-1 text-dark fw-bold">${config.bride.grandparents}</span>
+                       <span class="d-block mb-3">${config.bride.address}</span>
+                       <strong class="text-maroon fs-5 bg-white px-3 py-1 rounded-pill shadow-sm border d-inline-block">${config.bride.family}</strong>`;
+  }
   const brideImgEl = document.getElementById('bride-photo');
   if(brideImgEl && config.bride.photo) brideImgEl.src = config.bride.photo;
 
@@ -295,22 +314,25 @@ if (rsvpForm) {
         // Collect form data
         const formData = new FormData(rsvpForm);
         const name = formData.get('name');
-        const phone = formData.get('phone');
-        const message = formData.get('message');
 
-        // Create mailto link
-        const subject = `RSVP for Wedding - ${name}`;
-        const body = `Name: ${name}%0D%0APhone: ${phone}%0D%0AAttending: Yes, I will be there%0D%0AMessage: ${message}`;
+        // Extract WhatsApp number from config
+        // Remove spaces, dashes, or any non-digit/plus characters
+        const cleanNumber = config.contact.phone.replace(/[^\d+]/g, '');
+        // For the WhatsApp API link, the plus sign should typically be omitted, e.g., 919876543210
+        const waNumber = cleanNumber.startsWith('+') ? cleanNumber.substring(1) : cleanNumber;
 
-        // Use the email from config
-        const mailtoLink = `mailto:${config.contact.email}?subject=${subject}&body=${body}`;
+        // Create the pre-filled message text
+        const text = `*RSVP for Wedding* 💍%0A%0A*Name:* ${name}%0A*Attending:* Yes, I will be there!`;
 
-        // Open default mail client
-        window.location.href = mailtoLink;
+        // WhatsApp direct link with specific phone number
+        const whatsappLink = `https://wa.me/${waNumber}?text=${text}`;
 
-        // Show simulated success (since mailto just opens the app)
+        // Open WhatsApp in new tab/app
+        window.open(whatsappLink, '_blank');
+
+        // Show simulated success
         setTimeout(() => {
-          alert(currentLang === 'mr' ? "तुमचा प्रतिसाद ईमेलद्वारे पाठवण्यासाठी तयार आहे!" : "Your RSVP is ready to be sent via email!");
+          alert(currentLang === 'mr' ? "तुमचा प्रतिसाद WhatsApp द्वारे पाठवण्यासाठी तयार आहे!" : "Your RSVP is ready to be sent via WhatsApp!");
           rsvpForm.reset();
           rsvpForm.classList.remove('was-validated');
         }, 500);

@@ -12,6 +12,24 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    /* Style for message suggestions */
+    .msg-suggestion {
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--primary-color);
+    }
+    .msg-suggestion:hover, .msg-suggestion.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
 
@@ -39,7 +57,8 @@
           <li class="nav-item w-100"><a class="nav-link w-100" href="#home" data-i18n="nav_home">Home</a></li>
           <li class="nav-item w-100"><a class="nav-link w-100" href="#couple" data-i18n="nav_couple">Couple</a></li>
           <li class="nav-item w-100"><a class="nav-link w-100" href="#events" data-i18n="nav_events">Events</a></li>
-          <li class="nav-item w-100"><a class="nav-link w-100" href="#family" data-i18n="nav_family">Family</a></li>
+          <!-- Family section hidden here as well -->
+          <li class="nav-item w-100 d-none"><a class="nav-link w-100" href="#family" data-i18n="nav_family">Family</a></li>
           <li class="nav-item w-100" id="nav-gallery-item"><a class="nav-link w-100" href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
           <li class="nav-item w-100"><a class="nav-link w-100" href="#contact" data-i18n="nav_contact">Location</a></li>
           <li class="nav-item w-100"><a class="nav-link w-100" href="#rsvp" data-i18n="nav_rsvp">RSVP</a></li>
@@ -101,7 +120,7 @@
         <div class="col-12 col-md-5 order-2 order-md-2" data-aos="fade-left">
           <div class="custom-card p-4 p-md-5 text-center h-100 d-flex flex-column justify-content-center">
             <h3 class="display-6 fw-bold mb-2 text-maroon" id="bride-name">Bride Name</h3>
-            <p class="text-gold fst-italic mb-3 small fw-bold" data-i18n="bride_daughter_of">सुवासिनी</p>
+            <p class="text-gold fst-italic mb-3 small fw-bold" id="bride-relation">सुवासिनी</p>
             <h5 class="fw-bold fs-6 fs-md-5 m-0 text-dark" id="bride-father">Father</h5>
             <h5 class="fw-bold mb-3 fs-6 fs-md-5 text-dark" id="bride-mother">Mother</h5>
             <p class="lh-base text-muted m-0 small" id="bride-desc">Description</p>
@@ -116,7 +135,7 @@
         <div class="col-12 col-md-5 order-2 order-md-1" data-aos="fade-right">
           <div class="custom-card p-4 p-md-5 text-center h-100 d-flex flex-column justify-content-center">
             <h3 class="display-6 fw-bold mb-2 text-maroon" id="groom-name">Groom Name</h3>
-            <p class="text-gold fst-italic mb-3 small fw-bold" data-i18n="groom_son_of">चिरंजीव</p>
+            <p class="text-gold fst-italic mb-3 small fw-bold" id="groom-relation">चिरंजीव</p>
             <h5 class="fw-bold fs-6 fs-md-5 m-0 text-dark" id="groom-father">Father</h5>
             <h5 class="fw-bold mb-3 fs-6 fs-md-5 text-dark" id="groom-mother">Mother</h5>
             <p class="lh-base text-muted m-0 small" id="groom-desc">Description</p>
@@ -187,8 +206,8 @@
     </div>
   </section>
 
-  <!-- Family Section -->
-  <section id="family" class="container mt-4">
+  <!-- Family Section (HIDDEN but code kept intact) -->
+  <section id="family" class="container mt-4 d-none">
     <div class="w-100">
       <div class="text-center mb-4" data-aos="fade-up">
         <h2 class="display-5 fw-bold text-maroon mb-2" data-i18n="family_title">आमचे परिवार</h2>
@@ -238,7 +257,7 @@
     </div>
   </section>
 
-  <!-- Location & RSVP & Footer -->
+  <!-- Location & RSVP -->
   <section class="pb-0" style="background-color: var(--primary-light);">
     <div class="container px-3 w-100 mb-5">
       <div class="row g-4 align-items-stretch">
@@ -287,9 +306,6 @@
                 <div class="col-12">
                   <input type="text" class="form-control" id="name" name="name" required placeholder="पूर्ण नाव">
                 </div>
-                <div class="col-12">
-                  <input type="tel" class="form-control" id="phone" name="phone" required placeholder="फोन नंबर (+91)">
-                </div>
 
                 <div class="col-12 mt-3">
                   <label class="form-label fw-bold small text-maroon mb-2" data-i18n="rsvp_attending">तुम्ही उपस्थित राहाल का?</label>
@@ -306,12 +322,21 @@
                 </div>
 
                 <div class="col-12 mt-3">
-                  <textarea class="form-control" id="message" name="message" rows="3" placeholder="आमच्यासाठी संदेश"></textarea>
+                  <label class="form-label fw-bold small text-maroon mb-2" data-i18n="rsvp_message">आमच्यासाठी संदेश</label>
+
+                  <!-- Suggestion Chips -->
+                  <div class="d-flex flex-wrap gap-2 mb-2">
+                    <span class="badge rounded-pill msg-suggestion px-3 py-2 shadow-sm" onclick="setMessage('msg_suggestion_1')" data-i18n="msg_suggestion_1">Congratulations! 🎉</span>
+                    <span class="badge rounded-pill msg-suggestion px-3 py-2 shadow-sm" onclick="setMessage('msg_suggestion_2')" data-i18n="msg_suggestion_2">Can't wait for the big day! 🎊</span>
+                    <span class="badge rounded-pill msg-suggestion px-3 py-2 shadow-sm" onclick="setMessage('msg_suggestion_3')" data-i18n="msg_suggestion_3">Wishing you a lifetime of happiness! ❤️</span>
+                  </div>
+
+                  <textarea class="form-control" id="message" name="message" rows="3"></textarea>
                 </div>
               </div>
 
               <div class="col-12 mt-4 pt-2">
-                <button type="submit" class="btn btn-gold w-100 shadow-sm py-3 rounded-pill"><i class="bi bi-send-fill me-2"></i> <span data-i18n="rsvp_submit">पाठवा</span></button>
+                <button type="submit" class="btn btn-gold w-100 shadow-sm py-3 rounded-pill"><i class="bi bi-whatsapp me-2"></i> <span data-i18n="rsvp_submit">पाठवा</span></button>
               </div>
             </form>
           </div>
@@ -336,6 +361,22 @@
 
   <!-- Custom JS -->
   <script type="module" src="assets/js/main.js"></script>
+
+  <script>
+    // Set message from suggestion chips
+    function setMessage(i18nKey) {
+      const textarea = document.getElementById('message');
+      const langData = window.currentLangData; // Made accessible from main.js
+
+      if(textarea && langData && langData[i18nKey]) {
+        textarea.value = langData[i18nKey];
+
+        // Visual feedback on chips
+        document.querySelectorAll('.msg-suggestion').forEach(el => el.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+      }
+    }
+  </script>
 
 </body>
 </html>
