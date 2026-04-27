@@ -51,7 +51,7 @@ export const config = {
     date: "2026-05-03",
     tithi: "वैशाख शुक्ल पक्ष, मृगशीर्ष नक्षत्र",
     time: "12:30 PM",
-    venue: "सिंधु लॉन्स, देवदरी",
+    venue: "सिंधु लॉन्स, चंदनपुरी",
     address: "ता. संगमनेर, जि. अहमदनगर",
     mapLink: "https://maps.google.com/?q=Sindhu+Lawns+Devdari+Sangamner"
   },
